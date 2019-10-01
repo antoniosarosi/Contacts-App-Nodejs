@@ -1,0 +1,30 @@
+{
+  "name": "contacts-app",
+  "version": "1.0.0",
+  "description": "contacts app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniosarosi/Contacts-App-Nodejs.git"
+  },
+  "keywords": [
+    "Nodejs"
+  ],
+  "author": "Antonio Sarosi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniosarosi/Contacts-App-Nodejs/issues"
+  },
+  "homepage": "https://github.com/antoniosarosi/Contacts-App-Nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1"
+  }
+}

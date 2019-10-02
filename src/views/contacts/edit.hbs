@@ -1,18 +1,18 @@
 <div class="container p-3">
   <div class="row">
-    <div class="col-md mx-auto">
+    <div class="col-md-4 mx-auto">
       <div class="card">
         <div class="card-body">
-          <form action="/contacts/add" method="POST">
+          <form action="/contacts/edit/{{contact.id}}" method="POST">
             <div class="form-group">
-              <input type="text" name="name" class="form-control" placeholder="Contact Name" autofocus>
+              <input type="text" value="{{contact.name}}" name="name" class="form-control" placeholder="Name" autofocus>
             </div>
             <div class="form-group">
-              <input type="tel" name="number" class="form-control" placeholder="Number" autofocus>
+              <input type="tel" value="{{contact.number}}" name="number" class="form-control" placeholder="Number" autofocus>
             </div>
             <div class="form-group">
               <button class="btn btn-primary btn-block">
-                Add
+                Edit
               </button>
             </div>
           </form>

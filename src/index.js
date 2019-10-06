@@ -2,6 +2,12 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
+const session = require('express-session');
+const mysqlSession = require('express-mysql-session');
+const passport = require('passport');
+
+const { database } = require('./keys');
+require('./lib/passport');
 
 // Initializations
 const app = express();
@@ -22,10 +28,25 @@ app.set('view engine', '.hbs');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(session({
+    secret: 'contactsapp',
+    resave: false,
+    saveUninitialized: false,
+    store: mysqlSession(database)
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Global
+app.use((req, res, next) => {
+    app.locals.user = req.user;
+    next();
+});
 
 // Routes
 app.use(require('./routes/'));
 app.use(require('./routes/contacts'));
+app.use(require('./routes/authentication'));
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,0 +1,29 @@
+{{#if success}}
+  <div class="container p-3">
+    <div class="row">
+      <div class="col-md-3 ms-auto">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{success}}
+          <button class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{#if message}}
+  <div class="container p-3">
+    <div class="row">
+      <div class="col-md-3 ms-auto">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{message}}
+          <button class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

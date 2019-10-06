@@ -5,6 +5,7 @@ const handlebars = require('express-handlebars');
 const session = require('express-session');
 const mysqlSession = require('express-mysql-session');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 const { database } = require('./keys');
 require('./lib/passport');
@@ -36,9 +37,12 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Global
 app.use((req, res, next) => {
+    app.locals.success = req.flash('success');
+    app.locals.message = req.flash('message');
     app.locals.user = req.user;
     next();
 });

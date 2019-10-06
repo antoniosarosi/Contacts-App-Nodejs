@@ -22,6 +22,7 @@ router.post('/contacts/add', async (req, res) => {
     const contact = req.body;
     contact.user = req.user.username;
     await pool.query('INSERT INTO contacts SET ?', [contact]);
+    req.flash('success', 'Contact Added Successfully');
     res.redirect('/contacts');
 });
 
@@ -30,6 +31,7 @@ router.post('/contacts/add', async (req, res) => {
 router.get('/contacts/delete/:id', checkAuthentication, async (req, res) => {
     const { id } = req.params;
     await pool.query('DELETE FROM contacts WHERE id = ?', [id]);
+    req.flash('success', 'Contact Deleted Successfully');
     res.redirect('/contacts');
 });
 
@@ -44,6 +46,7 @@ router.get('/contacts/edit/:id', checkAuthentication, async (req, res) => {
 router.post('/contacts/edit/:id', async (req, res) => {
     const { id } = req.params;
     await pool.query('UPDATE contacts SET ? WHERE id = ?', [req.body, id]);
+    req.flash('success', 'Contact Updated Successfully');
     res.redirect('/contacts');
 });
 

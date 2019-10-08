@@ -1,3 +1,64 @@
 body {
     font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    background: #22242e;
+}
+
+/* Index */
+
+.index {
+    width: 100vw;
+    height: 100vh; 
+}
+
+.masthead {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    background: url('/img/bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-primary.start-button {
+    background: #11141d;
+    color: #fff;
+}
+
+/* Nav */
+
+.navbar {
+    background: #11141d;
+}
+
+.navbar img {
+    width: 23px;
+}
+
+/* Cards */
+
+.card {
+    background: #11141d;
+    color: #fff;
+}
+
+.form-control {
+    background: #373b3d;
+    border: none;
+    color: #fff;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #6bbf47, #3e863d);
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    color: #333;
+    font-weight: bold;
+    transition: ease-in-out .2s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
 }

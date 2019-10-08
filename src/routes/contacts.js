@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database');
 
-const { checkAuthentication } = require('../lib/authentication');
+const { isAuthenticated } = require('../lib/authentication');
 
 
-router.get('/contacts', checkAuthentication, async (req, res) => {
+router.get('/contacts', isAuthenticated, async (req, res) => {
     console.log(req.user);
     const contacts = await pool.query('SELECT * FROM contacts WHERE user = ?', [req.user.username]);
     console.log(contacts);
@@ -14,7 +14,7 @@ router.get('/contacts', checkAuthentication, async (req, res) => {
 
 // Add new contact
 
-router.get('/contacts/add', checkAuthentication, (req, res) => {
+router.get('/contacts/add', isAuthenticated, (req, res) => {
     res.render('contacts/add');
 });
 
@@ -28,7 +28,7 @@ router.post('/contacts/add', async (req, res) => {
 
 // Delete contact
 
-router.get('/contacts/delete/:id', checkAuthentication, async (req, res) => {
+router.get('/contacts/delete/:id', isAuthenticated, async (req, res) => {
     const { id } = req.params;
     await pool.query('DELETE FROM contacts WHERE id = ?', [id]);
     req.flash('success', 'Contact Deleted Successfully');
@@ -37,7 +37,7 @@ router.get('/contacts/delete/:id', checkAuthentication, async (req, res) => {
 
 // Edit contact
 
-router.get('/contacts/edit/:id', checkAuthentication, async (req, res) => {
+router.get('/contacts/edit/:id', isAuthenticated, async (req, res) => {
     const { id } = req.params;
     const contact = await pool.query('SELECT * FROM contacts WHERE id = ?', [id]);
     res.render('contacts/edit', { contact: contact[0] });

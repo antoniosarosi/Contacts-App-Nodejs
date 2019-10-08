@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-const { checkAuthentication } = require('../lib/authentication');
+const { isAuthenticated, isNotAuthenticated } = require('../lib/authentication');
 
 // Sign Up
-router.get('/signup', (req, res) => {
+router.get('/signup', isNotAuthenticated, (req, res) => {
     res.render('authentication/signup');
 });
 
@@ -29,12 +29,12 @@ router.post('/signin', (req, res, next) => {
 });
 
 // Profile
-router.get('/profile', (req, res) => {
+router.get('/profile', isAuthenticated, (req, res) => {
     res.render('profile');
 });
 
 // Log Out
-router.get('/logout', checkAuthentication, (req, res) => {
+router.get('/logout', isAuthenticated, (req, res) => {
     req.logOut();
     res.redirect('signin');
 })

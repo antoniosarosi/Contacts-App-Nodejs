@@ -1,27 +1,38 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="/">
+    <img src="/img/logo.png" class="mr-3" alt=""> ContactsApp
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      {{#if user}}
       <li class="nav-item active">
-        <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
-      </li>
-  
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Login
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="signin">Sign In</a>
-          <a class="dropdown-item" href="signup">Sign Up</a>
-        </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/logout">Logout<span class="sr-only"></span></a>
-      </li>
+          <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
+        </li>
+    
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Contacts
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/contacts">All contacts</a>
+            <a class="dropdown-item" href="/contacts/add">Add contact</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout<span class="sr-only"></span></a>
+        </li>
+      {{else}}
+        <li class="nav-item active">
+          <a href="/signin" class="nav-link">Sign In</a>
+        </li>
+        <li class="nav-item active">
+          <a href="/signup" class="nav-link">Sign Up</a>
+        </li>
+      {{/if}}
     </ul>
 
   </div>

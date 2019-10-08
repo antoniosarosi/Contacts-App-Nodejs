@@ -1,7 +1,7 @@
 <div class="container p-3">
   <div class="row">
     {{#each contacts}}
-      <div class="col-md-3 mb-3">
+      <div class="col-md-4 mb-3">
         <div class="card text-center">
           <div class="card-body">
             <h3 class="card-title text-capitalize">
@@ -9,11 +9,18 @@
             </h3>
             <p class="m-2">{{number}}</p>
             <p>{{timeago created_at}}</p>
-            <a href="/contacts/delete/{{id}}" class="btn btn-danger">Delete Contact</a>
-            <a href="/contacts/edit/{{id}}" class="btn btn-secondary">Edit Contact</a>
+            <a href="/contacts/edit/{{id}}" class="btn btn-secondary mb-2">Edit Contact</a>
+            <a href="/contacts/delete/{{id}}" class="btn btn-danger mb-2">Delete Contact</a>
           </div>
         </div>
       </div>
+    {{else}}
+       <div class="col-md-4 mx-auto">
+          <div class="card card-body text-center">
+            <p>No contacts saved yet</p>
+            <a href="/contacts/add">Add One!</a>
+          </div>
+        </div>
     {{/each}}
   </div>
 </div>

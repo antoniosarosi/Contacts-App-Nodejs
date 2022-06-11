@@ -1,10 +1,22 @@
 # Contacts App
 
-## Local Setup
+## Install dependencies
+```
+npm install
+```
 
-```bash
-npm init
+## Run backend
+Move to server folder and start the server
+```
+cd server
 npm run dev
+```
+
+## Run backend
+Move to client folder and start react project
+```
+cd ../client
+npm start
 ```
 
 ## Database
